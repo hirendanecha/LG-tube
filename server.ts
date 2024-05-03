@@ -94,8 +94,8 @@ export function app(): express.Express {
           keywords: 'Latinagirls Tube',
         };
         if (
-          params.indexOf('connection/') > -1 ||
-          params.indexOf('promote-you/') > -1
+          params.indexOf('girls/') > -1 ||
+          params.indexOf('girl-pages/') > -1
         ) {
           let id = params.split('/');
           id = id[id.length - 1];

@@ -12,7 +12,7 @@ export class ConnectionsComponent implements OnInit {
     private seoService:SeoService
   ) {
     const data = {
-      title: 'Latinagirls.tube Connections',
+      title: 'Latinagirls.tube Girls',
       url: `${location.href}`,
       description: '',
     };

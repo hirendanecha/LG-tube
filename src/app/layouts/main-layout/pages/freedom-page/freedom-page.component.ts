@@ -29,7 +29,7 @@ export class FreedomPageComponent {
 
     this.getPages();
     const data = {
-      title: 'Latinagirls.tube Promote You!',
+      title: 'Latinagirls.tube Girl Pages',
       url: `${location.href}`,
       description: '',
     };

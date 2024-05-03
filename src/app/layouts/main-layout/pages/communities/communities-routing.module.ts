@@ -9,7 +9,7 @@ const routes: Routes = [
     component: CommunitiesComponent,
   },
   {
-    path: 'add-connection',
+    path: 'add-girls',
     component: AddCommunityModalComponent,
     data: {
       isShowRightSideBar: false

@@ -37,7 +37,7 @@ export class CommunitiesComponent {
     }
     // this.getCommunities();
     const data = {
-      title: 'Latinagirls.tube Connection',
+      title: 'Latinagirls.tube Girls',
       url: `${window.location.href}`,
       description: '',
     };
@@ -95,7 +95,7 @@ export class CommunitiesComponent {
 
 
   createCommunity() {
-    this.router.navigate(['connection/add-connection'])
+    this.router.navigate(['girls/add-girls'])
   }
   // createCommunity() {
   //   const modalRef = this.modalService.open(AddCommunityModalComponent, {
