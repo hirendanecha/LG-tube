@@ -88,7 +88,7 @@ export function app(): express.Express {
           description:
             'Find like minded male or female unvaccinated organic humans!',
           image:
-            'https://www.latinagirls.tube/assets/images/landingpage/OD-default-profile.png',
+            'https://www.latinagirls.tube/assets/images/landingpage/lg-profile.jpg',
           site: 'https://www.latinagirls.tube/',
           url: 'https://www.latinagirls.tube' + params,
           keywords: 'Latinagirls Tube',
@@ -160,7 +160,7 @@ export function app(): express.Express {
               post?.thumbfilename ||
               post?.metaimage ||
               post?.imageUrl ||
-              'https://www.latinagirls.tube/assets/images/landingpage/OD-default-profile.png',
+              'https://www.latinagirls.tube/assets/images/landingpage/lg-profile.jpg',
           };
           seo.title = talent.name;
           seo.description = strip_html_tags(talent.description);
