@@ -86,7 +86,7 @@ export function app(): express.Express {
         var seo: any = {
           title: 'Latinagirls Tube',
           description:
-            'Find like minded male or female unvaccinated organic humans!',
+            'Meet Beautiful Latina Girls',
           image:
             'https://www.latinagirls.tube/assets/images/landingpage/lg-profile.jpg',
           site: 'https://www.latinagirls.tube/',
