@@ -1,6 +1,6 @@
-const url = 'https://api.organic.dating';
-const webUrl = 'https://organic.dating/';
-const tubeUrl = 'https://tube.organic.dating/';
+const url = 'https://api.latinagirls.tube';
+const webUrl = 'https://latinagirls.tube/';
+const tubeUrl = 'https://tube.latinagirls.tube/';
 
 // const url = 'http://localhost:8080';
 // const webUrl = 'http://localhost:4200/';
@@ -12,7 +12,7 @@ export const environment = {
   socketUrl: `${url}/`,
   webUrl: webUrl,
   tubeUrl: tubeUrl,
-  domain: '.organic.dating',
+  domain: '.latinagirls.tube',
   siteKey: '0x4AAAAAAAZb2DV_DCFRU271',
   secretKey: '0x4AAAAAAAZb2EPH58gkU3rCvwWHalhnV-k',
 };
