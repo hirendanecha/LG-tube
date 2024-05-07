@@ -19,14 +19,14 @@ export class OnBoardingComponent implements OnInit {
   steps = [
     'Tell Us Your Location',
     'Add a photo',
-    'Vaccine status',
-    'Do You Have Children',
-    `What's Your Highest Level of Education?`,
+    // 'Vaccine status',
+    // 'Do You Have Children',
+    // `What's Your Highest Level of Education?`,
     `What's Your Ethnicity?`,
     `What's Your Height?`,
-    `What's Your Religion?`,
-    'Do You Smoke?',
-    'What type of relationship are you looking for?',
+    // `What's Your Religion?`,
+    // 'Do You Smoke?',
+    // 'What type of relationship are you looking for?',
   ];
   childOptions = [
     'No',
@@ -143,32 +143,32 @@ export class OnBoardingComponent implements OnInit {
     //   });
   }
 
-  getImageName(step: string): string {
-    switch (step) {
-      case 'Tell Us Your Location':
-        return 'location.png';
-      case 'Add a photo':
-        return 'photo.png';
-      case 'Vaccine status':
-        return 'vaccine.png';
-      case 'Do You Have Children':
-        return 'children.png';
-      case `What's Your Highest Level of Education?`:
-        return 'education.png';
-      case `What's Your Ethnicity?`:
-        return 'ethnicity.png';
-      case `What's Your Height?`:
-        return 'height.png';
-      case `What's Your Religion?`:
-        return 'religion.png';
-      case 'Do You Smoke?':
-        return 'smoke.png';
-      case 'What type of relationship are you looking for?':
-        return 'relationship.png';
-      default:
-        return 'default.png';
-    }
-  }
+  // getImageName(step: string): string {
+  //   switch (step) {
+  //     case 'Tell Us Your Location':
+  //       return 'location.png';
+  //     case 'Add a photo':
+  //       return 'photo.png';
+  //     case 'Vaccine status':
+  //       return 'vaccine.png';
+  //     case 'Do You Have Children':
+  //       return 'children.png';
+  //     case `What's Your Highest Level of Education?`:
+  //       return 'education.png';
+  //     case `What's Your Ethnicity?`:
+  //       return 'ethnicity.png';
+  //     case `What's Your Height?`:
+  //       return 'height.png';
+  //     case `What's Your Religion?`:
+  //       return 'religion.png';
+  //     case 'Do You Smoke?':
+  //       return 'smoke.png';
+  //     case 'What type of relationship are you looking for?':
+  //       return 'relationship.png';
+  //     default:
+  //       return 'default.png';
+  //   }
+  // }
 
   goToStep(index: number): void {
     this.currentStep = index;
@@ -188,48 +188,48 @@ export class OnBoardingComponent implements OnInit {
         condition: !!this.profileImg.file,
         errorMessage: 'Please select an image',
       },
+      // {
+      //   step: 2,
+      //   condition:
+      //     this.onBoardingForm.get('isFluShot').valid &&
+      //     this.onBoardingForm.get('isVaccinated').valid,
+      //   errorMessage: 'Please select options',
+      // },
+      // {
+      //   step: 3,
+      //   condition: this.onBoardingForm.get('haveChild').valid,
+      //   errorMessage: 'Please select an option',
+      // },
+      // {
+      //   step: 4,
+      //   condition: this.onBoardingForm.get('education').valid,
+      //   errorMessage: 'Please select an option',
+      // },
       {
         step: 2,
-        condition:
-          this.onBoardingForm.get('isFluShot').valid &&
-          this.onBoardingForm.get('isVaccinated').valid,
-        errorMessage: 'Please select options',
-      },
-      {
-        step: 3,
-        condition: this.onBoardingForm.get('haveChild').valid,
-        errorMessage: 'Please select an option',
-      },
-      {
-        step: 4,
-        condition: this.onBoardingForm.get('education').valid,
-        errorMessage: 'Please select an option',
-      },
-      {
-        step: 5,
         condition: this.onBoardingForm.get('ethnicity').valid,
         errorMessage: 'Please select an option',
       },
       {
-        step: 6,
+        step: 3,
         condition: this.onBoardingForm.get('height').valid,
         errorMessage: 'Please select an option',
       },
-      {
-        step: 7,
-        condition: this.onBoardingForm.get('religion').valid,
-        errorMessage: 'Please select an option',
-      },
-      {
-        step: 8,
-        condition: this.onBoardingForm.get('isSmoke').valid,
-        errorMessage: 'Please select an option',
-      },
-      {
-        step: 9,
-        condition: this.onBoardingForm.get('relationshipType').valid,
-        errorMessage: 'Please select an option',
-      },
+      // {
+      //   step: 7,
+      //   condition: this.onBoardingForm.get('religion').valid,
+      //   errorMessage: 'Please select an option',
+      // },
+      // {
+      //   step: 8,
+      //   condition: this.onBoardingForm.get('isSmoke').valid,
+      //   errorMessage: 'Please select an option',
+      // },
+      // {
+      //   step: 9,
+      //   condition: this.onBoardingForm.get('relationshipType').valid,
+      //   errorMessage: 'Please select an option',
+      // },
     ];
     const validation = validations.find(
       (item) => item.step === this.currentStep
@@ -249,22 +249,22 @@ export class OnBoardingComponent implements OnInit {
         return !this.onBoardingForm.get('zip').valid && !this.onBoardingForm.get('city').valid;
       case 1:
         return !this.profileImg.file;
+      // case 2:
+      //   return !this.onBoardingForm.get('isFluShot').valid || !this.onBoardingForm.get('isVaccinated').valid;
+      // case 3:
+      //   return !this.onBoardingForm.get('haveChild').valid;
+      // case 4:
+      //   return !this.onBoardingForm.get('education').valid;
       case 2:
-        return !this.onBoardingForm.get('isFluShot').valid || !this.onBoardingForm.get('isVaccinated').valid;
-      case 3:
-        return !this.onBoardingForm.get('haveChild').valid;
-      case 4:
-        return !this.onBoardingForm.get('education').valid;
-      case 5:
         return !this.onBoardingForm.get('ethnicity').valid;
-      case 6:
+      case 3:
         return !this.onBoardingForm.get('height').valid;
-      case 7:
-        return !this.onBoardingForm.get('religion').valid;
-      case 8:
-        return !this.onBoardingForm.get('isSmoke').valid;
-      case 9:
-        return !this.onBoardingForm.get('relationshipType').valid;
+      // case 7:
+      //   return !this.onBoardingForm.get('religion').valid;
+      // case 8:
+      //   return !this.onBoardingForm.get('isSmoke').valid;
+      // case 9:
+      //   return !this.onBoardingForm.get('relationshipType').valid;
       default:
         return !this.onBoardingForm.valid;
     }

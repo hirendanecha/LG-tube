@@ -15,7 +15,7 @@
         *ngFor="let step of steps; let i = index"
         [style.display]="i === currentStep ? 'block' : 'none'"
       >
-      <img [src]="'/assets/images/on-boarding/header/' + getImageName(step)" class="h-40-px w-40-px mb-3">
+      <!-- <img [src]="'/assets/images/on-boarding/header/' + getImageName(step)" class="h-40-px w-40-px mb-3"> -->
         <h2 class="fs-title">{{ step }}</h2>
         <ng-container *ngIf="i === 0">
           <h3 class="fs-subtitle">City or Zip Code</h3>
@@ -122,7 +122,7 @@
           </div>
           <p class="font-12-px mt-2">You can upload more photos later!</p>
         </ng-container>
-        <ng-container *ngIf="i === 2">
+        <!-- <ng-container *ngIf="i === 2">
           <div class="gender d-flex flex-column mb-3">
             <label class="form-label"
               >Are you Covid-19 vaccinated?<span class="text-danger"
@@ -189,8 +189,8 @@
               </div>
             </div>
           </div>
-        </ng-container>
-        <ng-container *ngIf="i === 3">
+        </ng-container> -->
+        <!-- <ng-container *ngIf="i === 2">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -214,8 +214,8 @@
               </div>
             </div>
           </div>
-        </ng-container>
-        <ng-container *ngIf="i === 4">
+        </ng-container> -->
+        <!-- <ng-container *ngIf="i === 3">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -239,8 +239,8 @@
               </div>
             </div>
           </div>
-        </ng-container>
-        <ng-container *ngIf="i === 5">
+        </ng-container> -->
+        <ng-container *ngIf="i === 2">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -262,7 +262,7 @@
             </div>
           </div>
         </ng-container>
-        <ng-container *ngIf="i === 6">
+        <ng-container *ngIf="i === 3">
           <div class="d-flex gap-3">
             <select
               id="heightFeet"
@@ -293,7 +293,7 @@
             </select>
           </div>
         </ng-container>
-        <ng-container *ngIf="i === 7">
+        <!-- <ng-container *ngIf="i === 4">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -314,8 +314,8 @@
               </div>
             </div>
           </div>
-        </ng-container>
-        <ng-container *ngIf="i === 8">
+        </ng-container> -->
+        <!-- <ng-container *ngIf="i === 5">
             <div class="d-center">
               <div
                 class="d-flex flex-column gap-3 chip-group"
@@ -339,8 +339,8 @@
                 </div>
               </div>
             </div>
-        </ng-container>
-        <ng-container *ngIf="i === 9">
+        </ng-container> -->
+        <!-- <ng-container *ngIf="i === 6">
             <div class="d-center flex-column">
                 <div class="align-items-center">
                     <div class="d-flex form-check" *ngFor="let option of relationshipOptions">
@@ -357,7 +357,7 @@
                   </div>
             </div>
               
-        </ng-container>
+        </ng-container> -->
         <input
           *ngIf="i !== 0"
           type="button"
