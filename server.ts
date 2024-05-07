@@ -84,14 +84,14 @@ export function app(): express.Express {
         }
         const params = req.params[0];
         var seo: any = {
-          title: 'Latinagirls Tube',
+          title: 'LatinaGirls.tube',
           description:
-            'Meet Beautiful Latina Girls',
+            'Meet Beautiful Latina Girls! Talk One-on-One Face-to-Face!',
           image:
             'https://www.latinagirls.tube/assets/images/landingpage/lg-profile.jpg',
           site: 'https://www.latinagirls.tube/',
           url: 'https://www.latinagirls.tube' + params,
-          keywords: 'Latinagirls Tube',
+          keywords: 'LatinagirlsTube',
         };
         if (
           params.indexOf('girls/') > -1 ||
