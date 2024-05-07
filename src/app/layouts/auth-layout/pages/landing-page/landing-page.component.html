@@ -1,6 +1,6 @@
 <div class="main-container">
   <nav class="navbar navbar-light px-6 px-sm-10 auth-btns">
-    <div class="d-flex flex-column">
+    <div class="d-flex flex-column" routerLink="/">
       <img
         src="/assets/images/landingpage/latinagirls_landing.png"
         class="h-60-px pt-2"
@@ -29,7 +29,7 @@
   </nav>
 
   <div (click)="closeMenu()">
-    <div class="d-flex flex-column py-10 custom-height">
+    <div class="d-flex flex-column py-10 custom-height" [ngClass]="isLogin || isRegister ? 'cover-image' : ''">
       <div class="container">
         <div class="main-banner p-2 p-sm-4 single-box" *ngIf="!isLogin && !isRegister">
           <span class="d-flex flex-column align-items-center">
