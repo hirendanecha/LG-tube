@@ -79,9 +79,9 @@ export class SignUpComponent implements OnInit, AfterViewInit {
   ) {
     const data = {
       title: 'Latinagirls.tube Registration',
-      url: `${environment.webUrl}sign-up`,
+      url: `${environment.webUrl}register`,
       description: 'Registration page',
-      image: `${environment.webUrl}assets/images/landingpage/Healing-Tube-Logo.png`,
+      image: `${environment.webUrl}assets/images/landingpage/lg-cover.jpg`,
     };
     this.seoService.updateSeoMetaData(data);
     this.theme = localStorage.getItem('theme');
