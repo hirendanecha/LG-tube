@@ -15,4 +15,7 @@ export const environment = {
   domain: '.latinagirls.tube',
   siteKey: '0x4AAAAAAAZb2DV_DCFRU271',
   secretKey: '0x4AAAAAAAZb2EPH58gkU3rCvwWHalhnV-k',
+  qrLink: `${webUrl}settings/edit-profile/`,
+  EncryptIV: 8625401029409790,
+  EncryptKey: 8625401029409790,
 };

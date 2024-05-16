@@ -2,20 +2,28 @@
   <div class="col-lg-6 col-md-10 col-md-offset-3">
     <form class="msform" [formGroup]="onBoardingForm">
       <ul class="d-flex progressbar p-0">
-        <li
+        <li *ngFor="let step of visibleSteps(); let i = index"
+            [class.active]="step <= currentStep" 
+            class="step"
+            [attr.data-step]="step + 1">
+            <!-- (click)="goToStep(step)" -->
+            <!-- {{ step }} -->
+          </li>
+        </ul>
+        <!-- <ul class="d-flex progressbar p-0">
+          <li
           *ngFor="let step of steps; let i = index"
           [class.active]="i <= currentStep"
+          (click)="goToStep(i)"
           >
-          <!-- (click)="goToStep(i)" -->
-          <!-- {{ step }} -->
+          {{ step }}
         </li>
-      </ul>
-
+      </ul> -->
       <fieldset
         *ngFor="let step of steps; let i = index"
         [style.display]="i === currentStep ? 'block' : 'none'"
       >
-      <!-- <img [src]="'/assets/images/on-boarding/header/' + getImageName(step)" class="h-40-px w-40-px mb-3"> -->
+      <img [src]="'/assets/images/on-boarding/header/' + getImageName(step)" class="h-40-px w-40-px mb-3">
         <h2 class="fs-title">{{ step }}</h2>
         <ng-container *ngIf="i === 0">
           <h3 class="fs-subtitle">City or Zip Code</h3>
@@ -31,7 +39,6 @@
               formControlName="country"
             >
               <option [value]="defaultCountry">United states</option>
-              <option [value]="'Nicaragua'">Nicaragua</option>
               <option
                 [value]="item.country_code"
                 *ngFor="let item of allCountryData"
@@ -123,7 +130,7 @@
           </div>
           <p class="font-12-px mt-2">You can upload more photos later!</p>
         </ng-container>
-        <!-- <ng-container *ngIf="i === 2">
+        <ng-container *ngIf="i === 2">
           <div class="gender d-flex flex-column mb-3">
             <label class="form-label"
               >Are you Covid-19 vaccinated?<span class="text-danger"
@@ -190,8 +197,8 @@
               </div>
             </div>
           </div>
-        </ng-container> -->
-        <!-- <ng-container *ngIf="i === 2">
+        </ng-container>
+        <ng-container *ngIf="i === 3">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -215,8 +222,8 @@
               </div>
             </div>
           </div>
-        </ng-container> -->
-        <!-- <ng-container *ngIf="i === 3">
+        </ng-container>
+        <ng-container *ngIf="i === 4">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -240,8 +247,8 @@
               </div>
             </div>
           </div>
-        </ng-container> -->
-        <ng-container *ngIf="i === 2">
+        </ng-container>
+        <ng-container *ngIf="i === 5">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -263,7 +270,7 @@
             </div>
           </div>
         </ng-container>
-        <ng-container *ngIf="i === 3">
+        <ng-container *ngIf="i === 6">
           <div class="d-flex gap-3">
             <select
               id="heightFeet"
@@ -294,7 +301,7 @@
             </select>
           </div>
         </ng-container>
-        <!-- <ng-container *ngIf="i === 4">
+        <ng-container *ngIf="i === 7">
           <div class="d-center">
             <div
               class="d-flex flex-column gap-3 chip-group"
@@ -315,8 +322,8 @@
               </div>
             </div>
           </div>
-        </ng-container> -->
-        <!-- <ng-container *ngIf="i === 5">
+        </ng-container>
+        <ng-container *ngIf="i === 8">
             <div class="d-center">
               <div
                 class="d-flex flex-column gap-3 chip-group"
@@ -324,7 +331,7 @@
                 role="radiogroup"
               >
                 <div
-                  *ngFor="let option of smokeOptions"
+                  *ngFor="let option of noYesOptions"
                   (click)="smokeStatus(option)"
                   [ngClass]="statusofSmoke === option ? 'active' : ''"
                   class="chip chip-checkbox justify-content-center w-268-px"
@@ -340,8 +347,8 @@
                 </div>
               </div>
             </div>
-        </ng-container> -->
-        <!-- <ng-container *ngIf="i === 6">
+        </ng-container>
+        <ng-container *ngIf="i === 9">
             <div class="d-center flex-column">
                 <div class="align-items-center">
                     <div class="d-flex form-check" *ngFor="let option of relationshipOptions">
@@ -358,7 +365,226 @@
                   </div>
             </div>
               
-        </ng-container> -->
+        </ng-container>
+        <ng-container *ngIf="i === 10">
+          <div class="d-center flex-column">
+            <div class="d-flex flex-column">
+              <h4 class="py-sm-3">VACCINE STATUS</h4>
+              <h5>Is it required for your match to be Covid-19 Unvaccinated?</h5>
+            </div>
+            <div class="d-flex justify-content-around">
+              <div class="chip-group flex-wrap d-center" tabindex="-1" role="radiogroup">
+                <div
+                  (click)="matchVaccineStatus('Y')"
+                  class="chip chip-checkbox justify-content-center"
+                  tabindex="0"
+                  role="radio"
+                  [ngClass]="matchStatusofVaccine === 'Y' ? 'active' : ''"
+                  aria-checked="false"
+                >
+                  <input type="radio" name="radioEx" />
+                  <span id="radioOneLabel">Yes</span>
+                </div>
+                <div
+                  (click)="matchVaccineStatus('N')"
+                  [ngClass]="matchStatusofVaccine === 'N' ? 'active' : ''"
+                  class="chip chip-checkbox justify-content-center"
+                  tabindex="0"
+                  role="radio"
+                  aria-checked="false"
+                >
+                  <input type="radio" name="radioEx" />
+                  <span id="radioTwoLabel">No</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i === 11">
+          <div class="d-center flex-column">
+            <div class="d-flex flex-column">
+              <h4 class="py-sm-3">CAN YOUR MATCH HAVE CHILDREN</h4>
+            </div>
+            <div
+              class="d-flex flex-column gap-3 chip-group"
+              tabindex="-1"
+              role="radiogroup"
+            >
+              <div
+                *ngFor="let option of noYesOptions"
+                (click)="matchChildStatus(option)"
+                [ngClass]="matchStatusofChild === option ? 'active' : ''"
+                class="chip chip-checkbox justify-content-center w-268-px"
+                tabindex="0"
+                role="radio"
+                aria-checked="false"
+                [attr.id]="generateId(option)"
+              >
+                <input type="radio" name="radioEx" />
+                <span [attr.id]="'radioTwoLabel_' + generateId(option)">{{
+                  option
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i === 12">
+          <div class="d-center flex-column">
+            <div class="d-flex flex-column">
+              <h4 class="py-sm-3">DO YOU WANT YOUR MATCH TO BE EDUCATED?</h4>
+            </div>
+            <div
+              class="d-flex flex-column gap-3 chip-group"
+              tabindex="-1"
+              role="radiogroup"
+            >
+              <div
+                *ngFor="let option of studyOptions"
+                (click)="matchStudyStatus(option)"
+                [ngClass]="matchStatusofStudy === option ? 'active' : ''"
+                class="chip chip-checkbox justify-content-center w-268-px"
+                tabindex="0"
+                role="radio"
+                aria-checked="false"
+                [attr.id]="generateId(option)"
+              >
+                <input type="radio" name="radioEx" />
+                <span [attr.id]="'radioTwoLabel_' + generateId(option)">{{
+                  option
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i === 13">
+          <div class="d-center flex-column">
+            <div class="d-flex flex-column">
+              <h4 class="py-sm-3">ARE YOU SEEKING A SPEECIFIC ETHNICITY?</h4>
+            </div>
+            <div
+              class="d-flex flex-column gap-3 chip-group"
+              tabindex="-1"
+              role="radiogroup"
+            >
+              <div
+                *ngFor="let option of matchEthnicities()"
+                (click)="matchEthnicityStatus(option)"
+                [ngClass]="matchStatusofEthnicity === option ? 'active' : ''"
+                class="chip chip-checkbox justify-content-center w-268-px"
+                tabindex="0"
+                role="radio"
+                aria-checked="false"
+                [attr.id]="generateId(option)"
+              >
+                <input type="radio" name="radioEx" />
+                <span [attr.id]="'radioTwoLabel_' + generateId(option)">{{
+                  option
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i === 14">
+          <div class="d-center flex-column">
+            <div class="d-flex flex-column">
+              <h4 class="py-sm-3">ARE YOU SEEKING A SPEECIFIC BODY TYPE?</h4>
+            </div>
+            <div
+              class="d-flex flex-column gap-3 chip-group"
+              tabindex="-1"
+              role="radiogroup"
+            >
+              <div
+                *ngFor="let option of bodyTypeOptions"
+                (click)="matchBodyType(option)"
+                [ngClass]="matchStatusofBody === option ? 'active' : ''"
+                class="chip chip-checkbox justify-content-center w-268-px"
+                tabindex="0"
+                role="radio"
+                aria-checked="false"
+                [attr.id]="generateId(option)"
+              >
+                <input type="radio" name="radioEx" />
+                <span [attr.id]="'radioTwoLabel_' + generateId(option)">{{
+                  option
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i === 15">
+          <div class="d-center flex-column">
+            <div class="d-flex flex-column">
+              <h4 class="py-sm-3">ARE YOU SEEKING A SPEECIFIC RELIGION?</h4>
+            </div>
+            <div
+              class="d-flex flex-column gap-3 chip-group"
+              tabindex="-1"
+              role="radiogroup"
+            >
+              <div
+                *ngFor="let option of matchReligions()"
+                (click)="matchReligionStatus(option)"
+                [ngClass]="matchStatusofReligion === option ? 'active' : ''"
+                class="chip chip-checkbox justify-content-center w-268-px"
+                tabindex="0"
+                role="radio"
+                aria-checked="false"
+                [attr.id]="generateId(option)"
+              >
+                <input type="radio" name="radioEx" />
+                <span [attr.id]="'radioTwoLabel_' + generateId(option)">{{
+                  option
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i === 16">
+          <div class="d-center flex-column">
+            <div class="d-flex flex-column">
+              <h4 class="py-sm-3">CAN YOUR MATCH SMOKE?</h4>
+            </div>
+            <div
+              class="d-flex flex-column gap-3 chip-group"
+              tabindex="-1"
+              role="radiogroup"
+            >
+              <div
+                *ngFor="let option of matchnoYesOptions()"
+                (click)="matchSmokeStatus(option)"
+                [ngClass]="matchStatusofSmoke === option ? 'active' : ''"
+                class="chip chip-checkbox justify-content-center w-268-px"
+                tabindex="0"
+                role="radio"
+                aria-checked="false"
+                [attr.id]="generateId(option)"
+              >
+                <input type="radio" name="radioEx" />
+                <span [attr.id]="'radioTwoLabel_' + generateId(option)">{{
+                  option
+                }}</span>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="i === 17">
+          <h5 class="text-center">Please tell your match your story!</h5>
+          <div class="d-flex flex-column text-start">
+            <textarea
+              class="input-textarea"
+              cols="30"
+              rows="8"
+              placeholder="start typing..."
+              formControlName="idealText"
+            ></textarea>
+            <span class="text-danger">{{ onBoardingForm.get('idealText').value?.length || 0 }} / 500</span>
+            <div *ngIf="onBoardingForm.get('idealText').invalid && (onBoardingForm.get('idealText').dirty || onBoardingForm.get('idealText').touched)">
+              <div *ngIf="onBoardingForm.get('idealText').errors?.minlength" class="text-danger">Minimum length is 20 characters.</div>
+              <div *ngIf="onBoardingForm.get('idealText').errors?.maxlength" class="text-danger">Maximum length is 500 characters.</div>
+            </div>
+          </div>
+        </ng-container>
         <input
           *ngIf="i !== 0"
           type="button"

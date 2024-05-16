@@ -4,7 +4,7 @@
       onerror="this.onerror=null;this.src='/assets/images/profile-cover.png';" [alt]="groupDetails?.FirstName" />
 
     <div class="text-start d-flex align-items-center gap-3">
-      <img class="w-56-px h-56-px rounded-3" loading="lazy" data-src={{groupDetails?.ProfilePicName}}
+      <img class="w-56-px h-56-px rounded-3" loading="lazy" data-src={{groupDetails?.profilePicName}}
         onerror="this.onerror=null;this.src='/assets/images/avtar/avtar.png';" [alt]="groupDetails?.FirstName" />
 
       <div class="d-flex flex-column me-auto">
@@ -46,7 +46,7 @@
         </li>
 
         <li ngbNavItem>
-          <button ngbNavLink (click)="GetGroupFileResourcesById(groupDetails?.ID)">Resource</button>
+          <button ngbNavLink (click)="GetGroupFileResourcesById(groupDetails?.id)">Resource</button>
           <ng-template ngbNavContent>
             <h6 class="text-start mb-2">Uploaded Files</h6>
 

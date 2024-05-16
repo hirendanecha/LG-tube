@@ -19,7 +19,7 @@ export class UnsubscribedUsersComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) { 
     const data = {
-      title: 'Latinagirls.tube Unsubscribed User',
+      title: 'Latinagirls.tube Block User',
       url: `${window.location.href}`,
       description: '',
     };
