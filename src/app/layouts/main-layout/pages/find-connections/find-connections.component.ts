@@ -38,7 +38,7 @@ export class ConnectionsComponent implements OnInit {
     private toastService: ToastService
   ) {
     const data = {
-      title: 'Organic-Connections',
+      title: 'LatinaGirls.tube-Connections',
       url: `${location.href}`,
       description: '',
     };

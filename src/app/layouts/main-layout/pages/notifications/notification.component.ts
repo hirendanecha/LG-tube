@@ -24,7 +24,7 @@ export class NotificationsComponent {
     private socketService: SocketService
   ) {
     const data = {
-      title: 'Organic-Notification',
+      title: 'LatinaGirls.tube-Notification',
       url: `${location.href}`,
       description: '',
     };

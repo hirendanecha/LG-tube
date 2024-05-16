@@ -953,7 +953,7 @@ export class ProfileChatsListComponent
         groupId: this.userChat?.groupId || null,
         notificationDesc: this.groupData?.groupName ||this.sharedService?.userData?.userName + " incoming call...",
         notificationToProfileId: this.userChat.profileId,
-        domain: "organic.dating"
+        domain: "latinagirls.tube"
       };
       // this.customerService.startCallToBuzzRing(buzzRingData).subscribe({
       //   // next: (data: any) => {},
@@ -974,7 +974,7 @@ export class ProfileChatsListComponent
               notificationByProfileId: this.profileId,
               notificationDesc: this.groupData?.groupName || this?.userChat.userName + "incoming call...",
               notificationToProfileId: this.userChat.profileId,
-              domain: "organic.dating"
+              domain: "latinagirls.tube"
             };
             // this.customerService.startCallToBuzzRing(buzzRingData).subscribe({
             //   // next: (data: any) => {},
