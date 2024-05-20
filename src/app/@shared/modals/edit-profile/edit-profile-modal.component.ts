@@ -41,6 +41,13 @@ export class EditProfileModalComponent implements OnInit {
   idealText: string = '';
   currentStepIndex: number = 0;
   currentImageIndex: number = this.profilePics.length - 1;
+  matchStatusofVaccine: string = '';
+  matchStatusofChild: string = '';
+  matchStatusofStudy: string = '';
+  matchStatusofEthnicity: string = '';
+  matchStatusofBody: string = '';
+  matchStatusofReligion: string = '';
+  matchStatusofSmoke: string = '';
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -77,6 +84,13 @@ export class EditProfileModalComponent implements OnInit {
     this.selectedInterests = this.updateUserData?.interestList.map(
       (interest) => interest.interestId
     );
+    this.matchStatusofVaccine = this.updateUserData?.matchIsVaccinated;
+    this.matchStatusofChild = this.updateUserData?.matchHaveChild  === 'Y' ? 'Yes' : (this.updateUserData?.matchHaveChild === 'N' ? 'No' : null);
+    this.matchStatusofStudy = this.updateUserData?.matchEducation;
+    this.matchStatusofEthnicity = this.updateUserData?.matchEthnicity;
+    this.matchStatusofBody = this.updateUserData?.matchBodyType;
+    this.matchStatusofReligion = this.updateUserData?.matchReligion;
+    this.matchStatusofSmoke = this.updateUserData?.matchIsSmoke === 'Y' ? 'Yes' : (this.updateUserData?.matchIsSmoke === 'N' ? 'No' : null);
 
     this.currentImageIndex = this.profilePics.length - 1;
   }
@@ -276,7 +290,7 @@ export class EditProfileModalComponent implements OnInit {
 
   onClickInterest(id: number) {
     const index = this.selectedInterests.indexOf(id);
-    if (index === -1 && this.selectedInterests.length < 10) {
+    if (index === -1 && this.selectedInterests.length < 30) {
       this.selectedInterests.push(id);
       if (this.removeInterestList.includes(id)) {
         this.removeInterestList.splice(index, 1);
@@ -288,7 +302,7 @@ export class EditProfileModalComponent implements OnInit {
           this.removeInterestList.push(id)}
       });
     } else {
-      this.toastService.danger('You can only select up to 10 values at a time.');
+      this.toastService.danger('You can only select up to 30 values at a time.');
     }
   }
 
@@ -387,6 +401,75 @@ export class EditProfileModalComponent implements OnInit {
     this.submitForm();
   }
 
+  matchEthnicities() {
+    return ['It Does Not Matter', ...this.ethnicities];
+  }
+
+  matchReligions() {
+    return ['It Does Not Matter', ...this.religions];
+  }
+
+  matchnoYesOptions() {
+    return ['It Does Not Matter', ...this.smokeOptions];
+  }
+
+  matchVaccineStatus(vaccine: string) {
+    this.matchStatusofVaccine = vaccine;
+    this.updateUserData.matchIsVaccinated = this.matchStatusofVaccine;
+    this.submitForm();
+  }
+
+  matchChildStatus(child: string) {
+    let mappedValue: string;
+    if (child === 'Yes') {
+      mappedValue = 'Y';
+    } else if (child === 'No') {
+      mappedValue = 'N';
+    } else {
+      mappedValue = null;
+    }
+    this.matchStatusofChild = child;
+    this.updateUserData.matchHaveChild = mappedValue;
+    this.submitForm();
+  }
+
+  matchStudyStatus(study: string) {
+    this.matchStatusofStudy = study;
+    this.updateUserData.matchEducation = this.matchStatusofStudy;
+    this.submitForm();
+  }
+
+  matchBodyType(body: string) {
+    this.matchStatusofBody = body;
+    this.updateUserData.matchBodyType = this.matchStatusofBody;
+    this.submitForm();
+  }
+
+  matchEthnicityStatus(ethnicity: string) {
+    this.matchStatusofEthnicity = ethnicity;
+    this.updateUserData.matchEthnicity = this.matchStatusofEthnicity;
+    this.submitForm();
+  }
+
+  matchReligionStatus(religion: string) {
+    this.matchStatusofReligion = religion;
+    this.updateUserData.matchReligion = this.matchStatusofReligion;
+    this.submitForm();
+  }
+
+  matchSmokeStatus(smoke: string) {
+    let mappedValue: string;
+    if (smoke === 'Yes') {
+      mappedValue = 'Y';
+    } else if (smoke === 'No') {
+      mappedValue = 'N';
+    } else {
+      mappedValue = null;
+    }
+    this.matchStatusofSmoke = smoke;
+    this.updateUserData.matchIsSmoke = mappedValue;
+    this.submitForm();
+  }
   submitForm(): void {
     this.activeModal.close('success');
     this.customerService
