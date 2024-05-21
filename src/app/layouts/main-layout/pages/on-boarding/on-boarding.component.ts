@@ -144,7 +144,7 @@ export class OnBoardingComponent implements OnInit {
     matchEthnicity: new FormControl('', [Validators.required]),
     matchBodyType: new FormControl('', [Validators.required]),
     matchReligion: new FormControl('', [Validators.required]),
-      matchIsSmoke: new FormControl(''),
+    matchIsSmoke: new FormControl(''),
     idealDate: new FormControl('', [
       Validators.minLength(20),
       Validators.maxLength(500),
@@ -473,7 +473,7 @@ export class OnBoardingComponent implements OnInit {
             const zipData = data[0];
             // this.onBoardingForm.get('city').enable();
             this.onBoardingForm.patchValue({
-              city: zipData.city,
+              city: zipData.places,
             });
             this.onBoardingForm.patchValue({
               state:zipData.state,

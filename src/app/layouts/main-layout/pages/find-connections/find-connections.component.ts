@@ -95,7 +95,7 @@ export class ConnectionsComponent implements OnInit {
     if (!profile.profilePictures || profile.profilePictures.length === 0) {
       profile.profilePictures = [
         {
-          imageUrl: '/assets/images/landingpage/OD-default-profile.png',
+          imageUrl: '/assets/images/profile-cover.png',
         },
       ];
     }
@@ -111,16 +111,17 @@ export class ConnectionsComponent implements OnInit {
     // this.router.navigate(['/chats'])
     modalRef.result.then((res) => {
       if (res === 'success') {
-        this.inviteForChat(dataList);
+        this.inviteForChat(dataList, type);
       }
     });
   }
 
-  inviteForChat(invite): void {
+  inviteForChat(invite, type): void {
     this.socketService.createChatRoom(
       {
         profileId1: this.profileId,
         profileId2: invite?.profileId,
+        type: type
       },
       (data: any) => {
         this.toastService.success('Invitation sent successfully');
