@@ -46,7 +46,7 @@ export class CarouselComponent implements OnInit {
   ) {
     this.profileId = +localStorage.getItem('profileId');
     const data = {
-      title: 'Organic-Carousel',
+      title: 'LatinaGirls.tube-Carousel',
       url: `${location.href}`,
       description: '',
     };
