@@ -82,7 +82,7 @@ export class RightSidebarComponent implements OnInit {
 
   goToCommunityDetails(community: any): void {
     this.closeSidebar();
-    this.router.navigate(['girls ']);
+    this.router.navigate(['/girls']);
   }
 
   closeSidebar(): void {
