@@ -221,6 +221,35 @@
       padding: 10px 4px;
     }
   }
+
+  .online-status {
+    .abs-area {
+      width: 20px;
+      height: 20px;
+      // background: var(--highlight-color);
+      border-radius: 50%;
+    }
+    .abs-activity {
+      width: 18px;
+      height: 18px;
+      // background: var(--highlight-color);
+      background: #00a469;
+      border-radius: 50%;
+    }
+
+    .abs-active {
+      background: #00a469;
+    }
+    .abs-away {
+      background: #ffcc00;
+    }
+    .abs-dnd {
+      background: red;
+    }
+    .abs-invisible {
+      background: rgb(156, 155, 155);
+    }
+  }
 }
 
 ::ng-deep {
