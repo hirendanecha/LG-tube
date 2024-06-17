@@ -179,6 +179,23 @@
               </div>
             </div>
           </div>
+          <a (click)="groupEditDetails(groupData)">
+            <fa-icon
+              [icon]="['fas', 'gear']"
+              class="font-20-px m-1 ms-3 d-sm-none d-flex"
+              *ngIf="userChat.groupId"
+            />
+          </a>
+          <a
+            *ngIf="userChat.roomId"
+            class="nav-icon cursor"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Create Group"
+            (click)="createGroup()"
+            ><fa-icon [icon]="['fas', 'users']" class="font-20-px m-1"
+          /></a>
+          <div class="gap-3 d-flex flex-column flex-sm-row">
           <a
             *ngIf="userChat.roomId || userChat.groupId"
             class="nav-icon cursor"
@@ -189,15 +206,6 @@
             ><fa-icon [icon]="['fas', 'photo-film']" class="font-20-px m-1"
           /></a>
           <a
-            *ngIf="userChat.roomId"
-            class="nav-icon cursor"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="Create Group"
-            (click)="createGroup()"
-            ><fa-icon [icon]="['fas', 'users']" class="font-20-px m-1"
-          /></a>
-          <a
             class="nav-icon cursor"
             data-toggle="tooltip"
             data-placement="bottom"
@@ -205,6 +213,7 @@
             (click)="startCall()"
             ><fa-icon [icon]="['fas', 'video']" class="font-20-px m-1"
           /></a>
+          </div>
         </div>
       </div>
 

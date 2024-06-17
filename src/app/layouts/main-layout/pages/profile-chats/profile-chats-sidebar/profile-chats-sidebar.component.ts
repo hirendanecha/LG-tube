@@ -14,6 +14,7 @@ import {
   NgbActiveOffcanvas,
   NgbDropdown,
   NgbModal,
+  NgbOffcanvas,
 } from '@ng-bootstrap/ng-bootstrap';
 import { SocketService } from 'src/app/@shared/services/socket.service';
 import { SharedService } from 'src/app/@shared/services/shared.service';
@@ -44,6 +45,7 @@ export class ProfileChatsSidebarComponent
   selectedChatUser: any;
 
   isMessageSoundEnabled: boolean = true;
+  backCanvas: boolean = true;
   isCallSoundEnabled: boolean = true;
   isChatLoader = false;
   selectedButton: string = 'chats';
@@ -62,7 +64,8 @@ export class ProfileChatsSidebarComponent
     private router: Router,
     private toasterService: ToastService,
     public encryptDecryptService: EncryptDecryptService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private activeCanvas: NgbOffcanvas,
   ) {
     this.profileId = +localStorage.getItem('profileId');
     const notificationSound =
@@ -93,6 +96,7 @@ export class ProfileChatsSidebarComponent
     this.socketService.connect();
     this.getChatList();
     this.getGroupList();
+    this.backCanvas =this.activeCanvas.hasOpenOffcanvas();
   }
 
   ngAfterViewInit(): void {
