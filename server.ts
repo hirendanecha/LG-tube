@@ -177,7 +177,7 @@ export function app(): express.Express {
           const talent = {
             name: `Latinagirls Tube Research ${group?.PageTitle}`,
             description: group?.PageDescription,
-            image: group?.CoverPicName || group?.profilePicName,
+            image: group?.CoverPicName || group?.ProfilePicName,
           };
           seo.title = talent.name;
           seo.description = talent.description;
