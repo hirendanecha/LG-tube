@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { SafePipe } from './safe.pipe';
 import { GetImageUrlPipe } from './get-image-url.pipe';
 import { CommaSeperatePipe } from './comma-seperate.pipe';
-import { DateDayPipe } from '../services/date-day.pipe';
 import { NoSanitizePipe } from './sanitize.pipe';
 import { MessageTimePipe } from './message-time.pipe';
+import { DateDayPipe } from '../services/date-day.pipe';
+import { HighlightPipe } from './hightlight-text.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { MessageTimePipe } from './message-time.pipe';
     DateDayPipe,
     NoSanitizePipe,
     MessageTimePipe,
+    HighlightPipe
   ],
   imports: [CommonModule],
   exports: [
@@ -24,6 +26,7 @@ import { MessageTimePipe } from './message-time.pipe';
     DateDayPipe,
     NoSanitizePipe,
     MessageTimePipe,
+    HighlightPipe
   ],
 })
 export class PipeModule {}

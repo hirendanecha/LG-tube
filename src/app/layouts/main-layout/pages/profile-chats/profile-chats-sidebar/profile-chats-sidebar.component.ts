@@ -23,7 +23,10 @@ import { EncryptDecryptService } from 'src/app/@shared/services/encrypt-decrypt.
 import { CreateGroupModalComponent } from 'src/app/@shared/modals/create-group-modal/create-group-modal.component';
 import * as moment from 'moment';
 import { ToastService } from 'src/app/@shared/services/toast.service';
+import { QrScanModalComponent } from 'src/app/@shared/modals/qrscan-modal/qrscan-modal.component';
+import { AppQrModalComponent } from 'src/app/@shared/modals/app-qr-modal/app-qr-modal.component';
 import { MessageService } from 'src/app/@shared/services/message.service';
+import { ConferenceLinkComponent } from 'src/app/@shared/modals/create-conference-link/conference-link-modal.component';
 
 @Component({
   selector: 'app-profile-chats-sidebar',
@@ -45,8 +48,8 @@ export class ProfileChatsSidebarComponent
   selectedChatUser: any;
 
   isMessageSoundEnabled: boolean = true;
-  backCanvas: boolean = true;
   isCallSoundEnabled: boolean = true;
+  backCanvas: boolean = true;
   isChatLoader = false;
   selectedButton: string = 'chats';
   newChatList = [];
@@ -55,17 +58,18 @@ export class ProfileChatsSidebarComponent
   @Output('onNewChat') onNewChat: EventEmitter<any> = new EventEmitter<any>();
   @Input('isRoomCreated') isRoomCreated: boolean = false;
   @Input('selectedRoomId') selectedRoomId: number = null;
+  userStatus: string;
   constructor(
     private customerService: CustomerService,
     private socketService: SocketService,
     public sharedService: SharedService,
     public messageService: MessageService,
     private activeOffcanvas: NgbActiveOffcanvas,
+    private activeCanvas: NgbOffcanvas,
     private router: Router,
     private toasterService: ToastService,
     public encryptDecryptService: EncryptDecryptService,
-    private modalService: NgbModal,
-    private activeCanvas: NgbOffcanvas,
+    private modalService: NgbModal
   ) {
     this.profileId = +localStorage.getItem('profileId');
     const notificationSound =
@@ -243,6 +247,16 @@ export class ProfileChatsSidebarComponent
       }
     });
   }
+  appQrmodal(){
+    const modalRef = this.modalService.open(AppQrModalComponent, {
+      centered: true,
+    });
+  }
+  uniqueLink(){
+    const modalRef = this.modalService.open(ConferenceLinkComponent, {
+      centered: true,
+    });
+  }
 
   deleteOrLeaveChat(item) {
     if (item.roomId) {
@@ -307,4 +321,23 @@ export class ProfileChatsSidebarComponent
   //     });
   //   }
   // }
+  profileStatus(status: string) {
+    const data = {
+      status: status,
+      id: this.profileId,
+    };
+    const localUserData = JSON.parse(localStorage.getItem('userData'));
+    this.socketService.switchOnlineStatus(data, (res) => {
+      this.sharedService.userData.userStatus = res.status;
+      localUserData.userStatus = res.status;
+      localStorage.setItem('userData', JSON.stringify(localUserData));
+    });
+  }
+  findUserStatus(id: string): string {
+    const user = this.sharedService.onlineUserList.find(
+      (ele) => ele.userId === id
+    );
+    const status = user?.status;
+    return status;
+  }
 }

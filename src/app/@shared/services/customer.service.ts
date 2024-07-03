@@ -149,4 +149,13 @@ export class CustomerService {
   getMetaData(url) {
     return this.http.post(`${this.baseUrl}/get-meta`, url);
   }
+  startCallToBuzzRing(callerData: Object): Observable<any>{
+    const url = 'https://ring-api.latinagirls.tube/api/v1/customers/call-notification';
+    return this.http.post(url, callerData);
+  }
+
+  startGroupCallToBuzzRing(callerData: Object): Observable<any>{
+    const url = 'https://ring-api.latinagirls.tube/api/v1/customers/group-call-notification';
+    return this.http.post(url, callerData);
+  }
 }
