@@ -1143,6 +1143,7 @@ export class ProfileChatsListComponent
         Id: this.userChat.profileId,
         profilePicName: this.userChat.profilePicName,
         userName: this.userChat.userName,
+        isUpdate: true,
       };
       modalRef.componentInstance.data = data;
     }
